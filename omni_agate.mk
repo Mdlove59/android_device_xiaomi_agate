@@ -16,7 +16,7 @@ $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, device/xiaomi/agate/device.mk)
 
 PRODUCT_DEVICE := agate
-PRODUCT_NAME := omni_agate
+PRODUCT_NAME := twrp_agate
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := agate
 PRODUCT_MANUFACTURER := xiaomi
