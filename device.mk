@@ -16,16 +16,16 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_OPTIONAL_system=true
 
 # Boot control HAL
+PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-service \
     android.hardware.boot@1.1-service  \
     android.hardware.boot@1.2-service \
     libmtk_bsg.recovery
 
-PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES+= \
     bootctrl.mt6893
 
 PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.mt6893 \
     libgptutils \
     libz \
     libcutils
