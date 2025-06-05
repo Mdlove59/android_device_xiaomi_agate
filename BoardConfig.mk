@@ -106,6 +106,7 @@ VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 
 # TWRP Configuration
+TW_LOAD_VENDOR_MODULES := "fts_touch_spi.ko xiaomi_touch.ko"
 TW_THEME := portrait_hdpi
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
