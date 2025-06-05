@@ -9,7 +9,7 @@ DEVICE_PATH := device/xiaomi/agate
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
-
+TARGET_ERROR_FLAGS += -Wno-error=PRODUCT_USE_DYNAMIC_PARTITIONS
 # A/B
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
