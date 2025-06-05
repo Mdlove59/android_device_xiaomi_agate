@@ -9,7 +9,6 @@ LOCAL_PATH := device/xiaomi/agate
 
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
-TARGET_ERROR_FLAGS += -Wno-error=PRODUCT_USE_DYNAMIC_PARTITIONS
 
 ALLOW_MISSING_DEPENDENCIES := true
 # A/B
