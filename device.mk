@@ -7,6 +7,9 @@
 
 LOCAL_PATH := device/xiaomi/agate
 
+# Dynamic Partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
 ALLOW_MISSING_DEPENDENCIES := true
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -15,15 +18,28 @@ AB_OTA_POSTINSTALL_CONFIG += \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
-# Boot control HAL
+
+# Health Hal
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-service \
-    android.hardware.boot@1.1-service  \
-    android.hardware.boot@1.2-service \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service
+
+# Boot Control HAL
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.2-impl \
+    android.hardware.boot@1.2-impl.recovery \
+    android.hardware.boot@1.2-service
+
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.2-mtkimpl.recovery \
     libmtk_bsg.recovery
 
 PRODUCT_PACKAGES+= \
     bootctrl.mt6893
+
+# MTK Preloader Utils
+PRODUCT_PACKAGES += \
+    mtk_plpath_utils.recovery
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
