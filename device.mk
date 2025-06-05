@@ -25,11 +25,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES+= \
     bootctrl.mt6893
 
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    libgptutils \
-    libz \
-    libcutils
-
 PRODUCT_PACKAGES += \
     otapreopt_script \
     cppreopts.sh \
