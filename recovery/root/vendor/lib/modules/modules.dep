@@ -1,0 +1,2 @@
+/vendor/lib/modules/fts_touch_spi.ko: /vendor/lib/modules/xiaomi_touch.ko
+/vendor/lib/modules/xiaomi_touch.ko:

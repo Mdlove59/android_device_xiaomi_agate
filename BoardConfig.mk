@@ -9,6 +9,12 @@ DEVICE_PATH := device/xiaomi/agate
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
+# Metadata
+BOARD_USES_METADATA_PARTITION := true
+BOARD_ROOT_EXTRA_FOLDERS += metadata
 
 # A/B
 AB_OTA_UPDATER := true
@@ -20,8 +26,6 @@ AB_OTA_PARTITIONS += \
     vbmeta_vendor \
     vbmeta_system \
     product
-
-BOARD_USES_RECOVERY_AS_BOOT := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -132,6 +136,7 @@ TW_NO_FASTBOOT_BOOT := true
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TARGET_NO_RECOVERY := true
+
 # Statusbar icons flags
 TW_STATUS_ICONS_ALIGN := center
 TW_CUSTOM_CPU_POS := 50
