@@ -16,6 +16,9 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BOARD_USES_METADATA_PARTITION := true
 BOARD_ROOT_EXTRA_FOLDERS += metadata
 
+# Assert
+TARGET_OTA_ASSERT_DEVICE := agate,agatein,amber
+
 # A/B
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
@@ -91,6 +94,9 @@ BOARD_XIAOMI_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor product system_e
 BOARD_XIAOMI_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 BOARD_USES_RECOVERY_AS_BOOT := true
 
+# # Workaround for copying error vendor files to recovery ramdisk
+TARGET_COPY_OUT_VENDOR := vendor
+
 # Platform
 TARGET_BOARD_PLATFORM := mt6893
 
@@ -110,6 +116,11 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
+
+#Crypto
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
 
 # TWRP Configuration
 TW_LOAD_VENDOR_MODULES := "fts_touch_spi.ko xiaomi_touch.ko"
@@ -135,7 +146,6 @@ TW_NO_FASTBOOT_BOOT := true
 # Debug
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
-TARGET_NO_RECOVERY := true
 
 # Statusbar icons flags
 TW_STATUS_ICONS_ALIGN := center
