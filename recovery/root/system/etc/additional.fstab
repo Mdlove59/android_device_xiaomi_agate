@@ -6,33 +6,27 @@
 # 1 "<built-in>" 2
 # 1 "vendor/mediatek/proprietary/hardware/fstab/mt6893/fstab.in.mt6893" 2
 # 160 "vendor/mediatek/proprietary/hardware/fstab/mt6893/fstab.in.mt6893"
-system /system erofs ro wait,slotselect,logical,first_stage_mount
-system /system ext4 ro wait,slotselect,logical,first_stage_mount
-system /system f2fs ro wait,slotselect,logical,first_stage_mount
+system /system erofs ro wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+system /system ext4 ro wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
 
-vendor /vendor erofs ro wait,slotselect,logical,first_stage_mount
-vendor /vendor ext4 ro wait,slotselect,logical,first_stage_mount
-vendor /vendor f2fs ro wait,slotselect,logical,first_stage_mount
+vendor /vendor erofs ro wait,slotselect,avb,logical,first_stage_mount
+vendor /vendor ext4 ro wait,slotselect,avb,logical,first_stage_mount
 
 
-product /product erofs ro wait,slotselect,logical,first_stage_mount
-product /product ext4 ro wait,slotselect,logical,first_stage_mount
-product /product f2fs ro wait,slotselect,logical,first_stage_mount
-mi_ext /mnt/vendor/mi_ext erofs ro wait,slotselect,logical,first_stage_mount
-mi_ext /mnt/vendor/mi_ext ext4 ro wait,slotselect,logical,first_stage_mount
-mi_ext /mnt/vendor/mi_ext f2fs ro wait,slotselect,logical,first_stage_mount
+product /product erofs ro wait,slotselect,avb,logical,first_stage_mount
+product /product ext4 ro wait,slotselect,avb,logical,first_stage_mount
+mi_ext /mnt/vendor/mi_ext erofs ro wait,slotselect,avb=vbmeta,logical,first_stage_mount,nofail
+mi_ext /mnt/vendor/mi_ext ext4 ro wait,slotselect,avb=vbmeta,logical,first_stage_mount,nofail
 /mnt/vendor/mi_ext /mi_ext erofs ro,bind wait,nofail
 
-system_ext /system_ext erofs ro wait,slotselect,logical,first_stage_mount
-system_ext /system_ext ext4 ro wait,slotselect,logical,first_stage_mount
-system_ext /system_ext f2fs ro wait,slotselect,logical,first_stage_mount
+system_ext /system_ext erofs ro wait,avb,logical,first_stage_mount,slotselect
 
 
 
 
 /dev/block/by-name/metadata /metadata ext4 noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
 
-/dev/block/by-name/userdata /data f2fs noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,inlinecrypt wait,check,formattable,quota,latemount,resize,reservedsize=128m,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
+/dev/block/by-name/userdata /data f2fs noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065 wait,check,formattable,latemount,resize,reservedsize=128m,checkpoint=fs,fsverity
 
 
 
@@ -48,7 +42,7 @@ system_ext /system_ext f2fs ro wait,slotselect,logical,first_stage_mount
 
 
 
-/devices/platform/externdevice* auto auto defaults voldmanaged=sdcard1:auto,encryptable=userdata
+/devices/platform/externdevice* auto auto defaults voldmanaged=sdcard1:auto
 
 
 
@@ -79,7 +73,7 @@ system_ext /system_ext f2fs ro wait,slotselect,logical,first_stage_mount
 
 
 /dev/block/by-name/vbmeta_vendor /vbmeta_vendor emmc defaults first_stage_mount,nofail,slotselect
-/dev/block/by-name/vbmeta_system /vbmeta_system emmc defaults first_stage_mount,nofail,slotselect
+/dev/block/by-name/vbmeta_system /vbmeta_system emmc defaults first_stage_mount,nofail,slotselect,avb=vbmeta
 
 /dev/block/by-name/logo /logo emmc defaults defaults
 /dev/block/by-name/expdb /expdb emmc defaults defaults
@@ -134,3 +128,4 @@ system_ext /system_ext f2fs ro wait,slotselect,logical,first_stage_mount
 
 
 /dev/block/by-name/vbmeta /vbmeta emmc defaults defaults
+#Super_Image-Tool
