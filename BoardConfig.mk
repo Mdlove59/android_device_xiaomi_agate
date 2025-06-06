@@ -80,7 +80,6 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG :=
 endif
 TARGET_NO_RECOVERY := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/fstab/recovery.fstab
-TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 TARGET_USES_UEFI := true
 
 # Partitions
