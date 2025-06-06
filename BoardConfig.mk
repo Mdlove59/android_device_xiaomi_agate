@@ -35,7 +35,6 @@ AB_OTA_PARTITIONS += \
     product
 
 # Architecture
-ifeq ($(TARGET_IS_64_BIT),true)
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
@@ -58,13 +57,9 @@ TARGET_BOOTLOADER_BOARD_NAME := agate
 TARGET_NO_BOOTLOADER := true
 
 # Display
-TARGET_SCREEN_DENSITY := 440
-
-TARGET_BOARD_SUFFIX := _64                    # Remove if the device is 32-bit
-TARGET_USES_64_BIT_BINDER := true   
+TARGET_SCREEN_DENSITY := 440   
 
 # Kernel
-TARGET_IS_64_BIT := true
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user
